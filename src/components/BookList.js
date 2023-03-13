@@ -1,11 +1,16 @@
-import BookShow from './BookShow'
-function BookList ({books, onDelete, onEdit}){
+import {useContext} from 'react';
+import BooksContext from "../context/books";
+import BookShow from './BookShow';
+function BookList (){
+    const {books} = useContext(BooksContext);
     const renderBooks = books.map((book) =>{
-      return <BookShow key ={book.id} book ={book} onDelete = {onDelete} onEdit= {onEdit}/>
+      return <BookShow key ={book.id} book ={book} />
     });
-    return <div className='book-list'>
+
+    return( <div className='book-list'>
         {renderBooks}
     </div>
+    );
 }
 
 export default BookList;
